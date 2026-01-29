@@ -1,0 +1,70 @@
+# 3.3 Part 3L API Testing File
+#  Test cases are listed in order
+###
+# GET all tasks
+GET 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks
+Accept: application/json
+
+###
+# GET a single task
+GET 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks/1
+Accept: application/json
+
+###
+# GET a task that doesn't exist
+GET 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks/4000
+Accept: application/json
+
+###
+# POST create a new task with valid data
+POST 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks
+Content-Type: application/json
+
+{
+  "title": "New Task",
+  "description": "Look I've created a new task",
+  "user_id": 2,
+  "completed": false
+}
+
+###
+# POST create a new task with missing title
+POST 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks
+Content-Type: application/json
+
+{
+  "description": "Task with no title",
+  "user_id": 2,
+  "completed": false
+}
+
+###
+# POST create a new task with invalid user_id
+POST 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks
+Content-Type: application/json
+
+{
+  "title": "Bad user_id",
+  "description": "New task with bad user_id",
+  "user_id": 123456,
+  "completed": false
+}
+
+###
+# PUT update a task
+PUT 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Title Updated"
+}
+
+###
+# DELETE a task
+DELETE 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/tasks/1
+
+###
+# Get all tasks by user
+GET 8916lab3-deeefwfyhcada5gt.eastus-01.azurewebsites.net/users/2/tasks
+Accept: application/json
+
